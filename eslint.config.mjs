@@ -8,6 +8,7 @@ export default [
   { languageOptions: { parser: tseslint.parser } },
   {
     rules: {
+      'semi': 'warn',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-unused-vars': ['warn', { 'varsIgnorePattern': '^[A-Z]' }],
       "@typescript-eslint/explicit-function-return-type": "error",
