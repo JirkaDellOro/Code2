@@ -4,27 +4,29 @@ var ChainedTransforms;
     window.addEventListener("load", hndLoad);
     document.addEventListener("click", hndClick);
     let crc2;
-    let t1;
-    let t2;
+    const arrows = [];
     function hndLoad() {
         crc2 = document.querySelector("canvas").getContext("2d");
         const path = new Path2D();
         path.moveTo(0, 0);
-        path.lineTo(-20, -10);
         path.lineTo(-20, 10);
+        path.lineTo(-20, -10);
         path.closePath();
-        t1 = { path: path, angle: 45, distance: 200 };
-        t2 = { path: path, angle: -75, distance: 150 };
-        draw(t1);
-        draw(t2);
+        arrows.push({ path: path, angle: 45, distance: 200 });
+        arrows.push({ path: path, angle: -75, distance: 150 });
+        for (const arrow of arrows)
+            draw(arrow);
+        crc2.resetTransform();
     }
     function hndClick(_event) {
-        let point = new DOMPoint(_event.offsetX, _event.offsetY);
-        console.log("Before:", point);
-        const inverse = t1.transform.inverse();
-        point = inverse.transformPoint(point);
-        console.log("After:", point);
-        crc2.isPointInPath(t1.path, point.x, point.y);
+        const global = new DOMPoint(_event.offsetX, _event.offsetY);
+        console.log("Global:", global);
+        for (const arrow of arrows) {
+            const inverse = arrow.transform.inverse();
+            const local = inverse.transformPoint(global);
+            const hit = crc2.isPointInPath(arrow.path, local.x, local.y);
+            console.log(hit, "Local:", local);
+        }
     }
     function draw(_t) {
         crc2.moveTo(0, 0);
