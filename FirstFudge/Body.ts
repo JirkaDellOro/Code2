@@ -2,10 +2,10 @@ namespace FirstFudge {
   import ƒ = FudgeCore;
 
   export class Body extends ƒ.Node {
-    public constructor(_name: string, _mesh: ƒ.Mesh, _material: ƒ.Material) {
+    public constructor(_name: string) {
       super(_name);
-      this.addComponent(new ƒ.ComponentMesh(_mesh));
-      this.addComponent(new ƒ.ComponentMaterial(_material));
+      this.addComponent(new ƒ.ComponentMesh(mesh));
+      this.addComponent(new ƒ.ComponentMaterial(material));
       this.addComponent(new ƒ.ComponentTransform());
 
       this.mtxLocal.translateX(1);

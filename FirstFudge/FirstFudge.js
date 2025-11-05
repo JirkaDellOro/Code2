@@ -10,7 +10,7 @@ var FirstFudge;
         const cmpCamera = new ƒ.ComponentCamera();
         FirstFudge.mesh = new ƒ.MeshCube("Cube");
         FirstFudge.material = new ƒ.Material("Material", ƒ.ShaderLit);
-        earth = new FirstFudge.Body("Earth", FirstFudge.mesh, FirstFudge.material);
+        earth = new FirstFudge.Body("Earth");
         viewport = new ƒ.Viewport();
         viewport.initialize("Viewport", earth, cmpCamera, canvas);
         cmpCamera.mtxPivot.translateZ(3);

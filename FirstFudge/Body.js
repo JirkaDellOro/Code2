@@ -3,10 +3,10 @@ var FirstFudge;
 (function (FirstFudge) {
     var ƒ = FudgeCore;
     class Body extends ƒ.Node {
-        constructor(_name, _mesh, _material) {
+        constructor(_name) {
             super(_name);
-            this.addComponent(new ƒ.ComponentMesh(_mesh));
-            this.addComponent(new ƒ.ComponentMaterial(_material));
+            this.addComponent(new ƒ.ComponentMesh(FirstFudge.mesh));
+            this.addComponent(new ƒ.ComponentMaterial(FirstFudge.material));
             this.addComponent(new ƒ.ComponentTransform());
             this.mtxLocal.translateX(1);
         }

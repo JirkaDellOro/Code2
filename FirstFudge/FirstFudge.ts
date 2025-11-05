@@ -14,7 +14,7 @@ namespace FirstFudge {
     mesh = new ƒ.MeshCube("Cube");
     material = new ƒ.Material("Material", ƒ.ShaderLit);
 
-    earth = new Body("Earth", mesh, material);
+    earth = new Body("Earth");
 
     viewport = new ƒ.Viewport();
     viewport.initialize("Viewport", earth, cmpCamera, canvas);
