@@ -27,7 +27,7 @@ namespace FirstFudge {
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
   }
 
-  function hndInput(_event: InputEvent): void {
+  function hndInput(_event: Event): void {
     const value: number = +(<HTMLInputElement>_event.target).value;
     ƒ.Time.game.setScale(value);
   }

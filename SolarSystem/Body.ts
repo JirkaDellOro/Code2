@@ -24,7 +24,7 @@ namespace FirstFudge {
     }
 
     public update(): void {
-      const timeDelta: number = ƒ.Loop.timeFrameGame / 1000
+      const timeDelta: number = ƒ.Loop.timeFrameGame / 1000;
       const angleOrbit: number = this.velOrbit * timeDelta;
       const angleRotation: number = this.velRotation * timeDelta;
 
