@@ -5,6 +5,7 @@ var FirstFudge;
     document.addEventListener("DOMContentLoaded", hndLoad);
     let viewport;
     function hndLoad() {
+        document.querySelector("input").addEventListener("input", hndInput);
         const canvas = document.querySelector("canvas");
         const cmpCamera = new ƒ.ComponentCamera();
         FirstFudge.mesh = new ƒ.MeshCube("Cube");
@@ -17,6 +18,10 @@ var FirstFudge;
         cmpCamera.mtxPivot.translateZ(8);
         ƒ.Loop.start();
         ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
+    }
+    function hndInput(_event) {
+        const value = +_event.target.value;
+        ƒ.Time.game.setScale(value);
     }
     function createSolarSystem() {
         const result = new FirstFudge.Body("Sun", 0.5, "yellow", 0, Infinity, Infinity);

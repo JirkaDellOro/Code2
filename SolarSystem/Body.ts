@@ -21,8 +21,6 @@ namespace FirstFudge {
 
       this.velOrbit = 360 / _timeYear;
       this.velRotation = 360 / _timeDay;
-
-      ƒ.Time.game.setScale(10);
     }
 
     public update(): void {

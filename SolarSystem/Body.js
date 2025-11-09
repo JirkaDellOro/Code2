@@ -17,7 +17,6 @@ var FirstFudge;
             this.mtxLocal.translateX(_distance);
             this.velOrbit = 360 / _timeYear;
             this.velRotation = 360 / _timeDay;
-            ƒ.Time.game.setScale(10);
         }
         update() {
             const timeDelta = ƒ.Loop.timeFrameGame / 1000;

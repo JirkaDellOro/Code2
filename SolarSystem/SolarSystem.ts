@@ -8,6 +8,7 @@ namespace FirstFudge {
   let viewport: ƒ.Viewport;
 
   function hndLoad(): void {
+    document.querySelector("input")!.addEventListener("input", hndInput);
     const canvas: HTMLCanvasElement = document.querySelector("canvas")!;
     const cmpCamera: ƒ.ComponentCamera = new ƒ.ComponentCamera();
     mesh = new ƒ.MeshCube("Cube");
@@ -21,23 +22,28 @@ namespace FirstFudge {
     cmpCamera.mtxPivot.translateY(5);
     cmpCamera.mtxPivot.lookAt(ƒ.Vector3.ZERO());
     cmpCamera.mtxPivot.translateZ(8);
-    
+
     ƒ.Loop.start();
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
+  }
+
+  function hndInput(_event: InputEvent): void {
+    const value: number = +(<HTMLInputElement>_event.target).value;
+    ƒ.Time.game.setScale(value);
   }
 
   function createSolarSystem(): Body {
     const result: Body = new Body("Sun", 0.5, "yellow", 0, Infinity, Infinity);
     let planet: Body;
-    
+
     planet = new Body("Earth", 0.1, "blue", 1, 365, 1);
     planet.appendChild(new Body("Moon", 0.1, "lightgrey", 0.2, 28, Infinity));
 
     result.appendChild(planet);
-    
+
     planet = new Body("Mercury", 0.1, "lightblue", 0.7, 100, 2);
     result.appendChild(planet);
-    
+
     return result;
   }
 
