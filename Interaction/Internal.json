@@ -237,7 +237,56 @@
       "name": "Main",
       "active": true,
       "components": {},
-      "children": [],
+      "children": [
+        {
+          "ƒ.Node": {
+            "name": "Road",
+            "active": true,
+            "components": {
+              "ComponentMesh": [
+                {
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshQuad|2025-11-10T10:16:43.768Z|10708",
+                    "pivot": {
+                      "translation": "[0, 0, 0]",
+                      "rotation": "[-90, 0, 0]",
+                      "scaling": "[11, 111, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[0.1607843137254902, 0.2823529411764706, 0.11764705882352941, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[0, 0]",
+                      "rotation": 0,
+                      "scaling": "[1, 1]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2025-11-10T09:05:46.803Z|61641"
+                  }
+                }
+              ]
+            },
+            "children": []
+          }
+        },
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "idSource": "Graph|2025-11-10T09:13:47.781Z|34936"
+          }
+        }
+      ],
       "idResource": "Graph|2025-11-10T09:20:24.620Z|66326",
       "type": "Graph"
     }
@@ -256,6 +305,12 @@
         ]
       },
       "longitudes": 15
+    }
+  },
+  "MeshQuad|2025-11-10T10:16:43.768Z|10708": {
+    "ƒ.MeshQuad": {
+      "idResource": "MeshQuad|2025-11-10T10:16:43.768Z|10708",
+      "name": "MeshQuad"
     }
   }
 }
