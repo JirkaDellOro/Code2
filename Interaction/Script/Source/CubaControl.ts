@@ -52,7 +52,7 @@ namespace Script {
 
     public drive = (_forward: number): void => {
       this.node.mtxLocal.translateZ(_forward);
-    }
+    };
 
     // protected reduceMutator(_mutator: ƒ.Mutator): void {
     //   // delete properties that should not be mutated
