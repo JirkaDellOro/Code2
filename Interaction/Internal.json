@@ -19,6 +19,22 @@
       }
     }
   },
+  "MeshRotation|2025-11-10T09:50:29.526Z|01114": {
+    "ƒ.MeshRotation": {
+      "idResource": "MeshRotation|2025-11-10T09:50:29.526Z|01114",
+      "name": "MeshWheel",
+      "type": "MeshRotation",
+      "shape": {
+        "ƒ.Vector2": [
+          "[0, 0.5]",
+          "[0.5, 0.5]",
+          "[0.5, -0.5]",
+          "[0, -0.5]"
+        ]
+      },
+      "longitudes": 15
+    }
+  },
   "Graph|2025-11-10T09:13:47.781Z|34936": {
     "ƒ.Graph": {
       "name": "Cuba",
@@ -54,6 +70,27 @@
                 "active": true
               },
               "idMaterial": "Material|2025-11-10T09:05:46.803Z|61641"
+            }
+          }
+        ],
+        "CubaControl": [
+          {
+            "Script.CubaControl": {
+              "active": true
+            }
+          }
+        ],
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
             }
           }
         ]
@@ -232,6 +269,12 @@
       "type": "Graph"
     }
   },
+  "MeshQuad|2025-11-10T10:16:43.768Z|10708": {
+    "ƒ.MeshQuad": {
+      "idResource": "MeshQuad|2025-11-10T10:16:43.768Z|10708",
+      "name": "MeshQuad"
+    }
+  },
   "Graph|2025-11-10T09:20:24.620Z|66326": {
     "ƒ.Graph": {
       "name": "Main",
@@ -289,28 +332,6 @@
       ],
       "idResource": "Graph|2025-11-10T09:20:24.620Z|66326",
       "type": "Graph"
-    }
-  },
-  "MeshRotation|2025-11-10T09:50:29.526Z|01114": {
-    "ƒ.MeshRotation": {
-      "idResource": "MeshRotation|2025-11-10T09:50:29.526Z|01114",
-      "name": "MeshWheel",
-      "type": "MeshRotation",
-      "shape": {
-        "ƒ.Vector2": [
-          "[0, 0.5]",
-          "[0.5, 0.5]",
-          "[0.5, -0.5]",
-          "[0, -0.5]"
-        ]
-      },
-      "longitudes": 15
-    }
-  },
-  "MeshQuad|2025-11-10T10:16:43.768Z|10708": {
-    "ƒ.MeshQuad": {
-      "idResource": "MeshQuad|2025-11-10T10:16:43.768Z|10708",
-      "name": "MeshQuad"
     }
   }
 }
