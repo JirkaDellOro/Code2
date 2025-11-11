@@ -45,11 +45,15 @@ namespace Script {
     const vecScreen: ƒ.Vector2 = new ƒ.Vector2(_event.offsetX, _event.offsetY);
     const ray: ƒ.Ray = viewport.getRayFromClient(vecScreen);
     console.log(ray);
-    
+
     const cubas: ƒ.Node[] = viewport.getBranch().getChildrenByName("Cuba");
-    for (const cuba of cubas) {
-      const vecDistance: ƒ.Vector3 = ray.getDistance(cuba.mtxWorld.translation);
-      console.log(vecDistance.magnitude);
+    for (const cubaToCheck of cubas) {
+      const vecDistance: ƒ.Vector3 = ray.getDistance(cubaToCheck.mtxWorld.translation);
+      cubaToCheck.getComponent(ƒ.ComponentMaterial).clrPrimary = ƒ.Color.CSS("white");
+      if (vecDistance.magnitude < 1) {
+        cuba = cubaToCheck.getComponent(CubaControl);
+        cubaToCheck.getComponent(ƒ.ComponentMaterial).clrPrimary = ƒ.Color.CSS("red");
+      }
     }
   }
 

@@ -85,9 +85,13 @@ var Script;
         const ray = viewport.getRayFromClient(vecScreen);
         console.log(ray);
         const cubas = viewport.getBranch().getChildrenByName("Cuba");
-        for (const cuba of cubas) {
-            const vecDistance = ray.getDistance(cuba.mtxWorld.translation);
-            console.log(vecDistance.magnitude);
+        for (const cubaToCheck of cubas) {
+            const vecDistance = ray.getDistance(cubaToCheck.mtxWorld.translation);
+            cubaToCheck.getComponent(ƒ.ComponentMaterial).clrPrimary = ƒ.Color.CSS("white");
+            if (vecDistance.magnitude < 1) {
+                cuba = cubaToCheck.getComponent(Script.CubaControl);
+                cubaToCheck.getComponent(ƒ.ComponentMaterial).clrPrimary = ƒ.Color.CSS("red");
+            }
         }
     }
     function update( /* _event: Event */) {
