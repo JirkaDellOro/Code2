@@ -55,23 +55,37 @@ var Script;
     ƒ.Debug.info("Main Program Template running!");
     let viewport;
     let cuba;
+    const control = new ƒ.Control("Cuba", 0.5, 0 /* ƒ.CONTROL_TYPE.PROPORTIONAL */, 500);
     document.addEventListener("interactiveViewportStarted", start);
-    function start(_event) {
+    async function start(_event) {
         viewport = _event.detail;
         const cubaNode = viewport.getBranch().getChildByName("Cuba");
         cuba = cubaNode.getComponent(Script.CubaControl);
-        ƒ.Debug.log(cuba);
+        const cubaGraph = ƒ.Project.getResourcesByName("Cuba")[0];
+        console.log(cubaGraph);
+        for (let i = 0; i < 10; i++) {
+            const cubaInstance = await ƒ.Project.createGraphInstance(cubaGraph);
+            console.log(cubaInstance);
+            const position = ƒ.random.getVector3(new ƒ.Vector3(30, 0, 30), new ƒ.Vector3(-30, 0, -30));
+            cubaInstance.mtxLocal.translate(position);
+            cubaNode.getParent().addChild(cubaInstance);
+        }
         document.addEventListener("mousemove", hndMouseMove);
+        document.addEventListener("click", hndMouseClick);
         ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     }
     function hndMouseMove(_event) {
         cuba.rotate(-_event.movementX);
     }
+    function hndMouseClick(_event) {
+        cuba.rotate(-_event.movementX);
+    }
     function update( /* _event: Event */) {
         // ƒ.Physics.simulate();  // if physics is included and used
         const forward = ƒ.Keyboard.mapToTrit([ƒ.KEYBOARD_CODE.W, ƒ.KEYBOARD_CODE.ARROW_UP], [ƒ.KEYBOARD_CODE.S, ƒ.KEYBOARD_CODE.ARROW_DOWN]);
-        cuba.drive(forward);
+        control.setInput(forward);
+        cuba.drive(control.getOutput());
         viewport.draw();
         ƒ.AudioManager.default.update();
     }
