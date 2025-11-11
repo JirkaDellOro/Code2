@@ -29,7 +29,7 @@ namespace Script {
 
 
     document.addEventListener("mousemove", hndMouseMove);
-    document.addEventListener("click", hndMouseClick);
+    document.addEventListener("mousedown", hndMouseDown);
 
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
@@ -39,8 +39,18 @@ namespace Script {
     cuba.rotate(-_event.movementX);
   }
 
-  function hndMouseClick(_event: MouseEvent): void {
-    cuba.rotate(-_event.movementX);
+  function hndMouseDown(_event: MouseEvent): void {
+    if (_event.button != 2)
+      return;
+    const vecScreen: ƒ.Vector2 = new ƒ.Vector2(_event.offsetX, _event.offsetY);
+    const ray: ƒ.Ray = viewport.getRayFromClient(vecScreen);
+    console.log(ray);
+    
+    const cubas: ƒ.Node[] = viewport.getBranch().getChildrenByName("Cuba");
+    for (const cuba of cubas) {
+      const vecDistance: ƒ.Vector3 = ray.getDistance(cuba.mtxWorld.translation);
+      console.log(vecDistance.magnitude);
+    }
   }
 
   function update(/* _event: Event */): void {

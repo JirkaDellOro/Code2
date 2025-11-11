@@ -71,15 +71,24 @@ var Script;
             cubaNode.getParent().addChild(cubaInstance);
         }
         document.addEventListener("mousemove", hndMouseMove);
-        document.addEventListener("click", hndMouseClick);
+        document.addEventListener("mousedown", hndMouseDown);
         ƒ.Loop.addEventListener("loopFrame" /* ƒ.EVENT.LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     }
     function hndMouseMove(_event) {
         cuba.rotate(-_event.movementX);
     }
-    function hndMouseClick(_event) {
-        cuba.rotate(-_event.movementX);
+    function hndMouseDown(_event) {
+        if (_event.button != 2)
+            return;
+        const vecScreen = new ƒ.Vector2(_event.offsetX, _event.offsetY);
+        const ray = viewport.getRayFromClient(vecScreen);
+        console.log(ray);
+        const cubas = viewport.getBranch().getChildrenByName("Cuba");
+        for (const cuba of cubas) {
+            const vecDistance = ray.getDistance(cuba.mtxWorld.translation);
+            console.log(vecDistance.magnitude);
+        }
     }
     function update( /* _event: Event */) {
         // ƒ.Physics.simulate();  // if physics is included and used
